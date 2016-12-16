@@ -7,12 +7,16 @@
 //
 
 #import "GDUpGeneralInfomationView.h"
+#import "UIView+GDFrameKit.h"
 
 @interface GDUpGeneralInfomationView ()<UITableViewDataSource,UITableViewDelegate,UIGestureRecognizerDelegate>
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIPanGestureRecognizer *panGesture;
 @property (nonatomic, assign, readwrite) CGFloat totalHeight;
+
+// 是否是奇数，为了模拟高度改变，默认是否，奇数时返回19，偶数时返回16
+@property (nonatomic, assign) BOOL isOddNumber;
 
 @end
 
@@ -25,14 +29,6 @@
     // Drawing code
 }
 */
-
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self initSubview];
-    }
-    return self;
-}
 
 - (void)initSubview {
     
@@ -50,8 +46,28 @@
     [self addGestureRecognizer:self.panGesture];
 }
 
+// 得到数据后reload一下后会自动计算出自身的contentSize，从而可以得到高度
+- (void)bindDataSource {
+    
+    [self initSubview];
+    
+    [self willChangeHeight];
+}
+
+- (void)willChangeHeight {
+    [self.tableView reloadData];
+    self.tableView.height = self.totalHeight;
+    [self nofityDelegate];
+}
+
+- (void)nofityDelegate {
+    if (_delegate && [_delegate respondsToSelector:@selector(upGeneralInfomationViewHeightChange:)]) {
+        [_delegate upGeneralInfomationViewHeightChange:self.totalHeight];
+    }
+}
+
 - (CGFloat)totalHeight {
-    return 16 * 54.f;
+    return self.tableView.contentSize.height;
 }
 
 - (void)panAction:(UIPanGestureRecognizer *)gesture {
@@ -78,6 +94,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    if (_isOddNumber) return 19;
     return 16;
 }
 
@@ -94,8 +111,14 @@
     cell.backgroundColor = [UIColor clearColor];
     cell.contentView.backgroundColor = [UIColor clearColor];
     cell.selectionStyle = UITableViewCellSelectionStyleNone;
-    cell.textLabel.text = [NSString stringWithFormat:@"通用信息%ld",indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"通用信息%ld，是否是奇数:%d，点击我试试",indexPath.row,_isOddNumber];
     return cell;
+}
+
+// 此处只是为了模拟，实际项目中会复杂很多
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    self.isOddNumber = !_isOddNumber;
+    [self willChangeHeight];
 }
 
 @end

@@ -12,8 +12,19 @@
  *  上面的通用信息子view，内部是一个不可滚动的tableview列表
  */
 
+@protocol GDUpGeneralInfomationViewDelegate <NSObject>
+
+- (void)upGeneralInfomationViewHeightChange:(CGFloat)totalHeight;
+
+@end
+
 @interface GDUpGeneralInfomationView : UIView
 
 @property (nonatomic, assign, readonly) CGFloat totalHeight;
+
+@property (nonatomic, weak) id<GDUpGeneralInfomationViewDelegate>delegate;
+
+// 模拟传数据
+- (void)bindDataSource;
 
 @end

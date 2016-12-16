@@ -26,8 +26,9 @@
  * ToDo: 
  * 1 数量及位置可配置
  * 2 默认显示tab控制
- * 3 上面view高度改变时通知下面view
- * 4 现在布局全是计算frame，稍后或改成masonry
+ * 3 现在布局全是计算frame，稍后或改成masonry
+ * 5 数据传递，模型绑定
+ * 6 得到数据再初始化子控件
  */
 
 @interface GDGoodsDetailViewController : UIViewController

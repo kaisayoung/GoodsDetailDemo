@@ -20,7 +20,7 @@
 #import "GDMacros.h"
 #import "GDConst.h"
 
-@interface GDGoodsDetailViewController ()<UIScrollViewDelegate,GDMiddleTabSwitchViewDelegate,GDDownInfomationViewDataSource,GDDownInfomationViewDelegate>
+@interface GDGoodsDetailViewController ()<UIScrollViewDelegate,GDUpGeneralInfomationViewDelegate,GDMiddleTabSwitchViewDelegate,GDDownInfomationViewDataSource,GDDownInfomationViewDelegate>
 
 @property (nonatomic, strong) GDGoodsDetailBottomView *bottomView;
 @property (nonatomic, strong) GDUpGeneralInfomationView *upInfomationView;
@@ -57,7 +57,7 @@
     scrollView.delegate = self;
     [self.view addSubview:scrollView];
     self.scrollView = scrollView;
-
+    
     UIView *tableHeaderview1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, scrollView.width, self.upInfomationView.totalHeight)];
     UIView *tableHeaderview2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, scrollView.width, self.upInfomationView.totalHeight)];
     UIView *tableHeaderview3 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, scrollView.width, self.upInfomationView.totalHeight)];
@@ -125,7 +125,6 @@
 
 - (UIView *)gd_scrollView:(UIScrollView *)scrollView viewForHeaderInSection:(NSInteger)section {
     UIView *oneHeaderView = [self.sectionHeaderArray objectAtIndex:scrollView.tag];
-    NSLog(@"oneHeaderView in scrollView.tag is %@,%ld",oneHeaderView,scrollView.tag);
     if (self.currentInfoView.scrollView == scrollView) {
         if (self.tabSwitchView.superview) {
             [self.tabSwitchView removeFromSuperview];
@@ -134,24 +133,6 @@
     }
     return oneHeaderView;
 }
-
-#pragma mark - GDMiddleTabSwitchViewDelegate
-
-- (void)tabSwitchViewDidSelectIndex:(NSInteger)index {
-    
-    [self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH * index, 0) animated:NO];
-    if (self.upInfomationView.superview) {
-        [self.upInfomationView removeFromSuperview];
-    }
-    if (self.tabSwitchView.superview) {
-        [self.tabSwitchView removeFromSuperview];
-    }
-    self.currentShowIndex = index;
-    UIView *oneHeaderView = [self.sectionHeaderArray objectAtIndex:index];
-    [oneHeaderView addSubview:self.tabSwitchView];
-    [self.currentInfoView.scrollView.tableHeaderView addSubview:self.upInfomationView];
-}
-
 
 #pragma mark - GDDownInfomationViewDelegate
 
@@ -179,6 +160,38 @@
             }
         }];
     }
+}
+
+#pragma mark - GDMiddleTabSwitchViewDelegate
+
+- (void)tabSwitchViewDidSelectIndex:(NSInteger)index {
+    
+    [self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH * index, 0) animated:NO];
+    if (self.upInfomationView.superview) {
+        [self.upInfomationView removeFromSuperview];
+    }
+    if (self.tabSwitchView.superview) {
+        [self.tabSwitchView removeFromSuperview];
+    }
+    self.currentShowIndex = index;
+    UIView *oneHeaderView = [self.sectionHeaderArray objectAtIndex:index];
+    [oneHeaderView addSubview:self.tabSwitchView];
+    [self.currentInfoView.scrollView.tableHeaderView addSubview:self.upInfomationView];
+}
+
+#pragma mark - GDUpGeneralInfomationViewDelegate
+
+- (void)upGeneralInfomationViewHeightChange:(CGFloat)totalHeight {
+
+    self.upInfomationView.height = totalHeight;
+    [self.scrollView.subviews enumerateObjectsUsingBlock:^(UIView <GDDownInfomationViewProtocol>*subView, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([subView conformsToProtocol:@protocol(GDDownInfomationViewProtocol)]) {
+            UIView *newView = subView.scrollView.tableHeaderView;
+            newView.height = totalHeight;
+            // 注意此时不需要reload
+            subView.scrollView.tableHeaderView = newView;
+        }
+    }];
 }
 
 #pragma mark - Private
@@ -230,11 +243,12 @@
 }
 
 // 外界使用时需要改变top值；同一时间只能有一个superview添加此view
-// ToDo: 这里又出现了一个硬编码，稍后修改
 - (GDUpGeneralInfomationView *)upInfomationView {
     if (!_upInfomationView) {
-        _upInfomationView = [[GDUpGeneralInfomationView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 864)];
+        _upInfomationView = [[GDUpGeneralInfomationView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, SCREEN_HEIGHT - kNavigationBarHeight - kBottomBarHeight)];
+        _upInfomationView.delegate = self;
         _upInfomationView.backgroundColor = [UIColor cyanColor];
+        [_upInfomationView bindDataSource];
     }
     return _upInfomationView;
 }
@@ -242,7 +256,7 @@
 // tab切换view
 - (GDMiddleTabSwitchView *)tabSwitchView {
     if (!_tabSwitchView) {
-        _tabSwitchView = [[GDMiddleTabSwitchView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, 40)];
+        _tabSwitchView = [[GDMiddleTabSwitchView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kTabSwitchViewHeight)];
         _tabSwitchView.backgroundColor = [UIColor redColor];
         _tabSwitchView.delegate = self;
     }
