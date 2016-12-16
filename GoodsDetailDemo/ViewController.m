@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "GDGoodsDetailViewController.h"
 
 @interface ViewController ()
 
@@ -19,11 +20,11 @@
     // Do any additional setup after loading the view, typically from a nib.
 }
 
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (IBAction)onGoBtnTapped:(id)sender {
+    
+    GDGoodsDetailViewController *goodsDetailVC = [[GDGoodsDetailViewController alloc] initWithNibName:@"GDGoodsDetailViewController" bundle:nil];
+    [self.navigationController pushViewController:goodsDetailVC animated:YES];
+    
 }
-
 
 @end

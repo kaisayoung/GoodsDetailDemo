@@ -13,9 +13,21 @@
 		2309D4FC1DFFAB0F00A5AF95 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2309D4FA1DFFAB0F00A5AF95 /* Main.storyboard */; };
 		2309D4FE1DFFAB0F00A5AF95 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2309D4FD1DFFAB0F00A5AF95 /* Assets.xcassets */; };
 		2309D5011DFFAB0F00A5AF95 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2309D4FF1DFFAB0F00A5AF95 /* LaunchScreen.storyboard */; };
+		2309D5111DFFCCAD00A5AF95 /* GDGoodsDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 2309D50F1DFFCCAD00A5AF95 /* GDGoodsDetailViewController.m */; };
+		2309D5121DFFCCAD00A5AF95 /* GDGoodsDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2309D5101DFFCCAD00A5AF95 /* GDGoodsDetailViewController.xib */; };
+		2309D51E1DFFE43B00A5AF95 /* GDGoodsDetailBottomView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2309D51D1DFFE43B00A5AF95 /* GDGoodsDetailBottomView.m */; };
+		2309D52E1E00DECB00A5AF95 /* UIView+GDFrameKit.m in Sources */ = {isa = PBXBuildFile; fileRef = 2309D52D1E00DECB00A5AF95 /* UIView+GDFrameKit.m */; };
+		2309D5371E016E7100A5AF95 /* GDUpGeneralInfomationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 2309D5361E016E7100A5AF95 /* GDUpGeneralInfomationView.m */; };
+		23CF180B1E02C5F600FDA401 /* GDDownDetailInfomationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CF180A1E02C5F600FDA401 /* GDDownDetailInfomationView.m */; };
+		23CF180E1E02C64A00FDA401 /* GDDownSpecificationSizeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CF180D1E02C64A00FDA401 /* GDDownSpecificationSizeView.m */; };
+		23CF18111E02C75100FDA401 /* GDDownHotSaleRecommendView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CF18101E02C75100FDA401 /* GDDownHotSaleRecommendView.m */; };
+		23CF18141E02C8EF00FDA401 /* GDMiddleTabSwitchView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CF18131E02C8EF00FDA401 /* GDMiddleTabSwitchView.m */; };
+		23CF181C1E03BCC100FDA401 /* GDDownParentInfomationView.m in Sources */ = {isa = PBXBuildFile; fileRef = 23CF181B1E03BCC100FDA401 /* GDDownParentInfomationView.m */; };
+		FAD8799894516A516379B22F /* libPods-GoodsDetailDemo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 078DC2699435CD36816C60F5 /* libPods-GoodsDetailDemo.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		078DC2699435CD36816C60F5 /* libPods-GoodsDetailDemo.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-GoodsDetailDemo.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2309D4EE1DFFAB0F00A5AF95 /* GoodsDetailDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GoodsDetailDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2309D4F21DFFAB0F00A5AF95 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		2309D4F41DFFAB0F00A5AF95 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -26,6 +38,32 @@
 		2309D4FD1DFFAB0F00A5AF95 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2309D5001DFFAB0F00A5AF95 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2309D5021DFFAB0F00A5AF95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2309D50E1DFFCCAD00A5AF95 /* GDGoodsDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDGoodsDetailViewController.h; sourceTree = "<group>"; };
+		2309D50F1DFFCCAD00A5AF95 /* GDGoodsDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDGoodsDetailViewController.m; sourceTree = "<group>"; };
+		2309D5101DFFCCAD00A5AF95 /* GDGoodsDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GDGoodsDetailViewController.xib; sourceTree = "<group>"; };
+		2309D51C1DFFE43B00A5AF95 /* GDGoodsDetailBottomView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDGoodsDetailBottomView.h; sourceTree = "<group>"; };
+		2309D51D1DFFE43B00A5AF95 /* GDGoodsDetailBottomView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDGoodsDetailBottomView.m; sourceTree = "<group>"; };
+		2309D5261DFFF32A00A5AF95 /* GDMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDMacros.h; sourceTree = "<group>"; };
+		2309D52B1E00DB7F00A5AF95 /* GDConst.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GDConst.h; sourceTree = "<group>"; };
+		2309D52C1E00DECB00A5AF95 /* UIView+GDFrameKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+GDFrameKit.h"; sourceTree = "<group>"; };
+		2309D52D1E00DECB00A5AF95 /* UIView+GDFrameKit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+GDFrameKit.m"; sourceTree = "<group>"; };
+		2309D5351E016E7100A5AF95 /* GDUpGeneralInfomationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDUpGeneralInfomationView.h; sourceTree = "<group>"; };
+		2309D5361E016E7100A5AF95 /* GDUpGeneralInfomationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDUpGeneralInfomationView.m; sourceTree = "<group>"; };
+		23CF18091E02C5F600FDA401 /* GDDownDetailInfomationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDDownDetailInfomationView.h; sourceTree = "<group>"; };
+		23CF180A1E02C5F600FDA401 /* GDDownDetailInfomationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDDownDetailInfomationView.m; sourceTree = "<group>"; };
+		23CF180C1E02C64A00FDA401 /* GDDownSpecificationSizeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDDownSpecificationSizeView.h; sourceTree = "<group>"; };
+		23CF180D1E02C64A00FDA401 /* GDDownSpecificationSizeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDDownSpecificationSizeView.m; sourceTree = "<group>"; };
+		23CF180F1E02C75100FDA401 /* GDDownHotSaleRecommendView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDDownHotSaleRecommendView.h; sourceTree = "<group>"; };
+		23CF18101E02C75100FDA401 /* GDDownHotSaleRecommendView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDDownHotSaleRecommendView.m; sourceTree = "<group>"; };
+		23CF18121E02C8EF00FDA401 /* GDMiddleTabSwitchView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDMiddleTabSwitchView.h; sourceTree = "<group>"; };
+		23CF18131E02C8EF00FDA401 /* GDMiddleTabSwitchView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDMiddleTabSwitchView.m; sourceTree = "<group>"; };
+		23CF18161E0383A700FDA401 /* GDDownInfomationViewProtocol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDDownInfomationViewProtocol.h; sourceTree = "<group>"; };
+		23CF18181E038BC500FDA401 /* GDDownInfomationViewDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDDownInfomationViewDelegate.h; sourceTree = "<group>"; };
+		23CF18191E038BD700FDA401 /* GDDownInfomationViewDataSource.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDDownInfomationViewDataSource.h; sourceTree = "<group>"; };
+		23CF181A1E03BCC100FDA401 /* GDDownParentInfomationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDDownParentInfomationView.h; sourceTree = "<group>"; };
+		23CF181B1E03BCC100FDA401 /* GDDownParentInfomationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GDDownParentInfomationView.m; sourceTree = "<group>"; };
+		D33E5BACD2E4170B37709F3B /* Pods-GoodsDetailDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodsDetailDemo.release.xcconfig"; path = "Pods/Target Support Files/Pods-GoodsDetailDemo/Pods-GoodsDetailDemo.release.xcconfig"; sourceTree = "<group>"; };
+		DB8C22EEF019933972012C34 /* Pods-GoodsDetailDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodsDetailDemo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GoodsDetailDemo/Pods-GoodsDetailDemo.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,6 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FAD8799894516A516379B22F /* libPods-GoodsDetailDemo.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -44,6 +83,8 @@
 			children = (
 				2309D4F01DFFAB0F00A5AF95 /* GoodsDetailDemo */,
 				2309D4EF1DFFAB0F00A5AF95 /* Products */,
+				4E27E636E80EAD1A15D6D1AD /* Pods */,
+				745073F300D819A83A056951 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -66,6 +107,7 @@
 				2309D4FD1DFFAB0F00A5AF95 /* Assets.xcassets */,
 				2309D4FF1DFFAB0F00A5AF95 /* LaunchScreen.storyboard */,
 				2309D5021DFFAB0F00A5AF95 /* Info.plist */,
+				2309D5081DFFC95A00A5AF95 /* Module */,
 				2309D4F11DFFAB0F00A5AF95 /* Supporting Files */,
 			);
 			path = GoodsDetailDemo;
@@ -79,6 +121,94 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		2309D5081DFFC95A00A5AF95 /* Module */ = {
+			isa = PBXGroup;
+			children = (
+				2309D5251DFFF2D800A5AF95 /* Macro */,
+				2309D52A1DFFFFB100A5AF95 /* Category */,
+				23CF18151E02C95C00FDA401 /* Protocol */,
+				2309D50C1DFFC95A00A5AF95 /* View */,
+				2309D50A1DFFC95A00A5AF95 /* Controller */,
+			);
+			path = Module;
+			sourceTree = "<group>";
+		};
+		2309D50A1DFFC95A00A5AF95 /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				2309D50E1DFFCCAD00A5AF95 /* GDGoodsDetailViewController.h */,
+				2309D50F1DFFCCAD00A5AF95 /* GDGoodsDetailViewController.m */,
+				2309D5101DFFCCAD00A5AF95 /* GDGoodsDetailViewController.xib */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		2309D50C1DFFC95A00A5AF95 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				2309D5351E016E7100A5AF95 /* GDUpGeneralInfomationView.h */,
+				2309D5361E016E7100A5AF95 /* GDUpGeneralInfomationView.m */,
+				23CF18121E02C8EF00FDA401 /* GDMiddleTabSwitchView.h */,
+				23CF18131E02C8EF00FDA401 /* GDMiddleTabSwitchView.m */,
+				23CF181A1E03BCC100FDA401 /* GDDownParentInfomationView.h */,
+				23CF181B1E03BCC100FDA401 /* GDDownParentInfomationView.m */,
+				23CF18091E02C5F600FDA401 /* GDDownDetailInfomationView.h */,
+				23CF180A1E02C5F600FDA401 /* GDDownDetailInfomationView.m */,
+				23CF180C1E02C64A00FDA401 /* GDDownSpecificationSizeView.h */,
+				23CF180D1E02C64A00FDA401 /* GDDownSpecificationSizeView.m */,
+				23CF180F1E02C75100FDA401 /* GDDownHotSaleRecommendView.h */,
+				23CF18101E02C75100FDA401 /* GDDownHotSaleRecommendView.m */,
+				2309D51C1DFFE43B00A5AF95 /* GDGoodsDetailBottomView.h */,
+				2309D51D1DFFE43B00A5AF95 /* GDGoodsDetailBottomView.m */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		2309D5251DFFF2D800A5AF95 /* Macro */ = {
+			isa = PBXGroup;
+			children = (
+				2309D5261DFFF32A00A5AF95 /* GDMacros.h */,
+				2309D52B1E00DB7F00A5AF95 /* GDConst.h */,
+			);
+			path = Macro;
+			sourceTree = "<group>";
+		};
+		2309D52A1DFFFFB100A5AF95 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				2309D52C1E00DECB00A5AF95 /* UIView+GDFrameKit.h */,
+				2309D52D1E00DECB00A5AF95 /* UIView+GDFrameKit.m */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		23CF18151E02C95C00FDA401 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				23CF18161E0383A700FDA401 /* GDDownInfomationViewProtocol.h */,
+				23CF18191E038BD700FDA401 /* GDDownInfomationViewDataSource.h */,
+				23CF18181E038BC500FDA401 /* GDDownInfomationViewDelegate.h */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		4E27E636E80EAD1A15D6D1AD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DB8C22EEF019933972012C34 /* Pods-GoodsDetailDemo.debug.xcconfig */,
+				D33E5BACD2E4170B37709F3B /* Pods-GoodsDetailDemo.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		745073F300D819A83A056951 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				078DC2699435CD36816C60F5 /* libPods-GoodsDetailDemo.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -86,9 +216,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2309D5051DFFAB0F00A5AF95 /* Build configuration list for PBXNativeTarget "GoodsDetailDemo" */;
 			buildPhases = (
+				F5686218ACA2E12244C3ADE3 /* [CP] Check Pods Manifest.lock */,
 				2309D4EA1DFFAB0F00A5AF95 /* Sources */,
 				2309D4EB1DFFAB0F00A5AF95 /* Frameworks */,
 				2309D4EC1DFFAB0F00A5AF95 /* Resources */,
+				1DCE438E86E0F697FE6064E7 /* [CP] Embed Pods Frameworks */,
+				D676A279FFFCA2E462346064 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -110,7 +243,7 @@
 				TargetAttributes = {
 					2309D4ED1DFFAB0F00A5AF95 = {
 						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = ZQTVZ2L3HE;
+						DevelopmentTeam = 4E6LVA8SU8;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -139,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2309D5011DFFAB0F00A5AF95 /* LaunchScreen.storyboard in Resources */,
+				2309D5121DFFCCAD00A5AF95 /* GDGoodsDetailViewController.xib in Resources */,
 				2309D4FE1DFFAB0F00A5AF95 /* Assets.xcassets in Resources */,
 				2309D4FC1DFFAB0F00A5AF95 /* Main.storyboard in Resources */,
 			);
@@ -146,14 +280,71 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		1DCE438E86E0F697FE6064E7 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GoodsDetailDemo/Pods-GoodsDetailDemo-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D676A279FFFCA2E462346064 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-GoodsDetailDemo/Pods-GoodsDetailDemo-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F5686218ACA2E12244C3ADE3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		2309D4EA1DFFAB0F00A5AF95 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23CF180B1E02C5F600FDA401 /* GDDownDetailInfomationView.m in Sources */,
 				2309D4F91DFFAB0F00A5AF95 /* ViewController.m in Sources */,
+				2309D5371E016E7100A5AF95 /* GDUpGeneralInfomationView.m in Sources */,
+				23CF18111E02C75100FDA401 /* GDDownHotSaleRecommendView.m in Sources */,
+				2309D52E1E00DECB00A5AF95 /* UIView+GDFrameKit.m in Sources */,
+				2309D5111DFFCCAD00A5AF95 /* GDGoodsDetailViewController.m in Sources */,
 				2309D4F61DFFAB0F00A5AF95 /* AppDelegate.m in Sources */,
+				23CF180E1E02C64A00FDA401 /* GDDownSpecificationSizeView.m in Sources */,
+				23CF18141E02C8EF00FDA401 /* GDMiddleTabSwitchView.m in Sources */,
 				2309D4F31DFFAB0F00A5AF95 /* main.m in Sources */,
+				2309D51E1DFFE43B00A5AF95 /* GDGoodsDetailBottomView.m in Sources */,
+				23CF181C1E03BCC100FDA401 /* GDDownParentInfomationView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -269,24 +460,28 @@
 		};
 		2309D5061DFFAB0F00A5AF95 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DB8C22EEF019933972012C34 /* Pods-GoodsDetailDemo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZQTVZ2L3HE;
+				DEVELOPMENT_TEAM = 4E6LVA8SU8;
 				INFOPLIST_FILE = GoodsDetailDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.justlooklook.GoodsDetailDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.justlooklook.GoodsDetailDemo4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
 		};
 		2309D5071DFFAB0F00A5AF95 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D33E5BACD2E4170B37709F3B /* Pods-GoodsDetailDemo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = ZQTVZ2L3HE;
+				DEVELOPMENT_TEAM = 4E6LVA8SU8;
 				INFOPLIST_FILE = GoodsDetailDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.justlooklook.GoodsDetailDemo;
+				PRODUCT_BUNDLE_IDENTIFIER = com.justlooklook.GoodsDetailDemo4;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -310,6 +505,7 @@
 				2309D5071DFFAB0F00A5AF95 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
