@@ -1,0 +1,2 @@
+# GoodsDetailDemo
+简单实现淘宝天猫App之前，美丽说App现在的商品详情页滑动效果
