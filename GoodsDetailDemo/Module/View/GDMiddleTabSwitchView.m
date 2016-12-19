@@ -25,18 +25,9 @@
 }
 */
 
-- (instancetype)initWithFrame:(CGRect)frame {
-    self = [super initWithFrame:frame];
-    if (self) {
-        [self initSubview];
-    }
-    return self;
-}
-
-- (void)initSubview {
+- (void)getDataSourceTitlesArray:(NSArray *)titlesArray {
     
-    CGFloat btnWidth = ceilf(self.width / 3.0);
-    NSMutableArray *titlesArray = [NSMutableArray arrayWithObjects:@"详情",@"规格尺码",@"热卖推荐", nil];
+    CGFloat btnWidth = ceilf(self.width / [titlesArray count]);
     for (NSInteger i = 0; i < [titlesArray count]; i++) {
         UIButton *oneBtn = [[UIButton alloc] initWithFrame:CGRectMake(btnWidth * i, 0, btnWidth, self.height - 2)];
         [oneBtn setTitle:[titlesArray objectAtIndex:i] forState:UIControlStateNormal];
@@ -51,7 +42,6 @@
     lineView.backgroundColor = [UIColor blueColor];
     [self addSubview:lineView];
     self.lineView = lineView;
-
 }
 
 - (void)setCurrentSelectIndex:(NSInteger)currentSelectIndex {

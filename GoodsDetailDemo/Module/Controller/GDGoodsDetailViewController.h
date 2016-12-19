@@ -20,6 +20,7 @@
  *  第二种方式仍然有一个硬伤：允许scrollview滚动时很难同步不同tab对应tableview的偏移量
  // 将上面的融合进下面的试一下
  *  貌似完美解决，666
+ *  因为使用了一个系统的UIReplicantContentView类型view，所以最好用真机体验
  */
 
 /*
@@ -29,6 +30,7 @@
  * 3 现在布局全是计算frame，稍后或改成masonry
  * 5 数据传递，模型绑定
  * 6 得到数据再初始化子控件
+ * 7 对collectionview的支持不够
  */
 
 @interface GDGoodsDetailViewController : UIViewController

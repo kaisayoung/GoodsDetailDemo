@@ -24,4 +24,6 @@
 
 @property (nonatomic, weak) id<GDMiddleTabSwitchViewDelegate>delegate;
 
+- (void)getDataSourceTitlesArray:(NSArray *)titlesArray;
+
 @end

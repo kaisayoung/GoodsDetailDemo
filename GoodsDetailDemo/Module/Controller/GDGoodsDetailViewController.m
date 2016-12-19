@@ -26,9 +26,10 @@
 @property (nonatomic, strong) GDUpGeneralInfomationView *upInfomationView;
 @property (nonatomic, strong) GDMiddleTabSwitchView *tabSwitchView;
 @property (nonatomic, strong) UIView <GDDownInfomationViewProtocol>*currentInfoView;
-@property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIScrollView *fullScrollView;
 @property (nonatomic, strong) UIView *tabChooseViewSnapShotView;
 @property (nonatomic, strong) NSMutableArray *sectionHeaderArray;
+@property (nonatomic, strong) NSArray *tabTitlesArray;
 @property (nonatomic, assign) NSInteger currentShowIndex;
 @property (nonatomic, assign) BOOL isReachTop;
 
@@ -39,6 +40,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.automaticallyAdjustsScrollViewInsets = NO;
+    self.title = @"商品详情页Demo";
     [self initSubview];
 }
 
@@ -56,12 +58,13 @@
     scrollView.showsHorizontalScrollIndicator = YES;
     scrollView.delegate = self;
     [self.view addSubview:scrollView];
-    self.scrollView = scrollView;
+    self.fullScrollView = scrollView;
     
     UIView *tableHeaderview1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, scrollView.width, self.upInfomationView.totalHeight)];
     UIView *tableHeaderview2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, scrollView.width, self.upInfomationView.totalHeight)];
     UIView *tableHeaderview3 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, scrollView.width, self.upInfomationView.totalHeight)];
     
+    // 暂时显示子控件及位置都是固定的
     GDDownDetailInfomationView *detailSubView = [[GDDownDetailInfomationView alloc] initWithFrame:CGRectMake(0, 0, scrollView.width, scrollView.height)];
     GDDownSpecificationSizeView *sizeSubView = [[GDDownSpecificationSizeView alloc] initWithFrame:CGRectMake(scrollView.width, 0, scrollView.width, scrollView.height)];
     GDDownHotSaleRecommendView *recommendSubView = [[GDDownHotSaleRecommendView alloc] initWithFrame:CGRectMake(scrollView.width * 2, 0, scrollView.width, scrollView.height)];
@@ -77,9 +80,10 @@
     detailSubView.scrollView.tableHeaderView = tableHeaderview1;
     sizeSubView.scrollView.tableHeaderView = tableHeaderview2;
     recommendSubView.scrollView.tableHeaderView = tableHeaderview3;
-    [self.scrollView addSubview:detailSubView];
-    [self.scrollView addSubview:sizeSubView];
-    [self.scrollView addSubview:recommendSubView];
+    
+    [self.fullScrollView addSubview:detailSubView];
+    [self.fullScrollView addSubview:sizeSubView];
+    [self.fullScrollView addSubview:recommendSubView];
     
     // 暂时默认显示第一个
     _currentShowIndex = 1000;
@@ -140,7 +144,7 @@
     
     if (offsetY >= self.upInfomationView.totalHeight && !_isReachTop) {
         self.isReachTop = YES;
-        [self.scrollView.subviews enumerateObjectsUsingBlock:^(UIView <GDDownInfomationViewProtocol>*subView, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.fullScrollView.subviews enumerateObjectsUsingBlock:^(UIView <GDDownInfomationViewProtocol>*subView, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([subView conformsToProtocol:@protocol(GDDownInfomationViewProtocol)]) {
                 if (scrollView != subView.scrollView) {
                     [subView.scrollView setContentOffset:CGPointMake(0, self.upInfomationView.totalHeight) animated:NO];
@@ -152,7 +156,7 @@
         self.isReachTop = NO;
     }
     if (!_isReachTop) {
-        [self.scrollView.subviews enumerateObjectsUsingBlock:^(UIView <GDDownInfomationViewProtocol>*subView, NSUInteger idx, BOOL * _Nonnull stop) {
+        [self.fullScrollView.subviews enumerateObjectsUsingBlock:^(UIView <GDDownInfomationViewProtocol>*subView, NSUInteger idx, BOOL * _Nonnull stop) {
             if ([subView conformsToProtocol:@protocol(GDDownInfomationViewProtocol)]) {
                 if (scrollView != subView.scrollView) {
                     [subView.scrollView setContentOffset:CGPointMake(0, offsetY) animated:NO];
@@ -166,7 +170,7 @@
 
 - (void)tabSwitchViewDidSelectIndex:(NSInteger)index {
     
-    [self.scrollView setContentOffset:CGPointMake(SCREEN_WIDTH * index, 0) animated:NO];
+    [self.fullScrollView setContentOffset:CGPointMake(SCREEN_WIDTH * index, 0) animated:NO];
     if (self.upInfomationView.superview) {
         [self.upInfomationView removeFromSuperview];
     }
@@ -184,7 +188,7 @@
 - (void)upGeneralInfomationViewHeightChange:(CGFloat)totalHeight {
 
     self.upInfomationView.height = totalHeight;
-    [self.scrollView.subviews enumerateObjectsUsingBlock:^(UIView <GDDownInfomationViewProtocol>*subView, NSUInteger idx, BOOL * _Nonnull stop) {
+    [self.fullScrollView.subviews enumerateObjectsUsingBlock:^(UIView <GDDownInfomationViewProtocol>*subView, NSUInteger idx, BOOL * _Nonnull stop) {
         if ([subView conformsToProtocol:@protocol(GDDownInfomationViewProtocol)]) {
             UIView *newView = subView.scrollView.tableHeaderView;
             newView.height = totalHeight;
@@ -235,10 +239,22 @@
     return _sectionHeaderArray;
 }
 
+- (NSArray *)tabTitlesArray {
+    if (!_tabTitlesArray) {
+        _tabTitlesArray = @[@"详情",@"规格尺码",@"热卖推荐"];
+    }
+    return _tabTitlesArray;
+}
+
 - (void)setCurrentShowIndex:(NSInteger)currentShowIndex {
     if (_currentShowIndex == currentShowIndex) return;
     _currentShowIndex = currentShowIndex;
-    UIView <GDDownInfomationViewProtocol>*subView = [_scrollView.subviews objectAtIndex:currentShowIndex];
+    __block UIView <GDDownInfomationViewProtocol>*subView = nil;
+    [self.fullScrollView.subviews enumerateObjectsUsingBlock:^(UIView <GDDownInfomationViewProtocol>*oneSubView, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([oneSubView conformsToProtocol:@protocol(GDDownInfomationViewProtocol)] && oneSubView.tag == currentShowIndex) {
+            subView = oneSubView;
+        }
+    }];
     self.currentInfoView = subView;
 }
 
@@ -259,11 +275,12 @@
         _tabSwitchView = [[GDMiddleTabSwitchView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kTabSwitchViewHeight)];
         _tabSwitchView.backgroundColor = [UIColor redColor];
         _tabSwitchView.delegate = self;
+        [_tabSwitchView getDataSourceTitlesArray:self.tabTitlesArray];
     }
     return _tabSwitchView;
 }
 
-// 这样的目的是不用频繁改变tabview的位置，模拟器运行时可能会是白色
+// 这样的目的是不用频繁改变tabview的位置，模拟器运行时可能会是白条
 // 通过reveal可知返回的是UIReplicantContentView类型view
 - (UIView *)tabChooseViewSnapShotView {
     if (!_tabChooseViewSnapShotView) {
