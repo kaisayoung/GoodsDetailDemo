@@ -13,6 +13,8 @@
 
 @property (nonatomic, strong) UIView *lineView;
 
+@property (nonatomic, assign) NSInteger titlesCount;
+
 @end
 
 @implementation GDMiddleTabSwitchView
@@ -27,8 +29,9 @@
 
 - (void)getDataSourceTitlesArray:(NSArray *)titlesArray {
     
-    CGFloat btnWidth = ceilf(self.width / [titlesArray count]);
-    for (NSInteger i = 0; i < [titlesArray count]; i++) {
+    self.titlesCount = [titlesArray count];
+    CGFloat btnWidth = ceilf(self.width / _titlesCount);
+    for (NSInteger i = 0; i < _titlesCount; i++) {
         UIButton *oneBtn = [[UIButton alloc] initWithFrame:CGRectMake(btnWidth * i, 0, btnWidth, self.height - 2)];
         [oneBtn setTitle:[titlesArray objectAtIndex:i] forState:UIControlStateNormal];
         [oneBtn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
@@ -54,7 +57,7 @@
             oneBtn.enabled = (oneBtn.tag == currentSelectIndex + 1000) ? NO : YES;
         }
     }];
-    CGFloat btnWidth = ceilf(self.width / 3.0);
+    CGFloat btnWidth = ceilf(self.width / _titlesCount);
     [UIView animateWithDuration:0.3 animations:^{
         _lineView.centerX = (btnWidth * currentSelectIndex) + btnWidth / 2.0;
     }];

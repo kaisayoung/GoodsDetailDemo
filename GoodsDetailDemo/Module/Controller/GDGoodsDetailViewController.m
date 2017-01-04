@@ -27,8 +27,8 @@
 @property (nonatomic, strong) GDMiddleTabSwitchView *tabSwitchView;
 @property (nonatomic, strong) UIView <GDDownInfomationViewProtocol>*currentInfoView;
 @property (nonatomic, strong) UIScrollView *fullScrollView;
-@property (nonatomic, strong) UIView *tabChooseViewSnapShotView;
-@property (nonatomic, strong) NSMutableArray *sectionHeaderArray;
+@property (nonatomic, strong) UIView *tabSwitchSnapShotView;
+@property (nonatomic, strong) NSMutableArray *sectionHeaderViewArray;
 @property (nonatomic, strong) NSArray *tabTitlesArray;
 @property (nonatomic, assign) NSInteger currentShowIndex;
 @property (nonatomic, assign) BOOL isReachTop;
@@ -106,7 +106,7 @@
     CGFloat offsetY = self.currentInfoView.scrollView.contentOffset.y;
     self.upInfomationView.top = -offsetY + kNavigationBarHeight;
     [self.view addSubview:self.upInfomationView];
-    [self.view addSubview:self.tabChooseViewSnapShotView];
+    [self.view addSubview:self.tabSwitchSnapShotView];
     [self.view bringSubviewToFront:self.bottomView];
 }
 
@@ -128,7 +128,7 @@
 }
 
 - (UIView *)gd_scrollView:(UIScrollView *)scrollView viewForHeaderInSection:(NSInteger)section {
-    UIView *oneHeaderView = [self.sectionHeaderArray objectAtIndex:scrollView.tag];
+    UIView *oneHeaderView = [self.sectionHeaderViewArray objectAtIndex:scrollView.tag];
     if (self.currentInfoView.scrollView == scrollView) {
         if (self.tabSwitchView.superview) {
             [self.tabSwitchView removeFromSuperview];
@@ -178,7 +178,7 @@
         [self.tabSwitchView removeFromSuperview];
     }
     self.currentShowIndex = index;
-    UIView *oneHeaderView = [self.sectionHeaderArray objectAtIndex:index];
+    UIView *oneHeaderView = [self.sectionHeaderViewArray objectAtIndex:index];
     [oneHeaderView addSubview:self.tabSwitchView];
     [self.currentInfoView.scrollView.tableHeaderView addSubview:self.upInfomationView];
 }
@@ -202,9 +202,9 @@
 
 - (void)stopScrollFinallyWithScrollView:(UIScrollView *)scrollView {
     
-    if (self.tabChooseViewSnapShotView.superview) {
-        [self.tabChooseViewSnapShotView removeFromSuperview];
-        self.tabChooseViewSnapShotView = nil;
+    if (self.tabSwitchSnapShotView.superview) {
+        [self.tabSwitchSnapShotView removeFromSuperview];
+        self.tabSwitchSnapShotView = nil;
     }
     CGFloat offsetX = scrollView.contentOffset.x;
     NSInteger index = offsetX / scrollView.width;
@@ -217,7 +217,7 @@
     if (self.tabSwitchView.superview) {
         [self.tabSwitchView removeFromSuperview];
     }
-    UIView *oneHeaderView = [self.sectionHeaderArray objectAtIndex:index];
+    UIView *oneHeaderView = [self.sectionHeaderViewArray objectAtIndex:index];
     [oneHeaderView addSubview:self.tabSwitchView];
     [self.currentInfoView.scrollView.tableHeaderView addSubview:self.upInfomationView];
 }
@@ -225,18 +225,18 @@
 #pragma mark - Set & Get
 
 // 并不是为了提高效率，而是为了结构清晰
-- (NSMutableArray *)sectionHeaderArray {
-    if (!_sectionHeaderArray) {
-        NSMutableArray *sectionHeaderArray = [NSMutableArray array];
+- (NSMutableArray *)sectionHeaderViewArray {
+    if (!_sectionHeaderViewArray) {
+        NSMutableArray *sectionHeaderViewArray = [NSMutableArray array];
         UIView *sectionHeaderView0 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kTabSwitchViewHeight)];
         UIView *sectionHeaderView1 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kTabSwitchViewHeight)];
         UIView *sectionHeaderView2 = [[UIView alloc] initWithFrame:CGRectMake(0, 0, SCREEN_WIDTH, kTabSwitchViewHeight)];
-        [sectionHeaderArray addObject:sectionHeaderView0];
-        [sectionHeaderArray addObject:sectionHeaderView1];
-        [sectionHeaderArray addObject:sectionHeaderView2];
-        _sectionHeaderArray = sectionHeaderArray;
+        [sectionHeaderViewArray addObject:sectionHeaderView0];
+        [sectionHeaderViewArray addObject:sectionHeaderView1];
+        [sectionHeaderViewArray addObject:sectionHeaderView2];
+        _sectionHeaderViewArray = sectionHeaderViewArray;
     }
-    return _sectionHeaderArray;
+    return _sectionHeaderViewArray;
 }
 
 - (NSArray *)tabTitlesArray {
@@ -282,12 +282,12 @@
 
 // 这样的目的是不用频繁改变tabview的位置，模拟器运行时可能会是白条
 // 通过reveal可知返回的是UIReplicantContentView类型view
-- (UIView *)tabChooseViewSnapShotView {
-    if (!_tabChooseViewSnapShotView) {
-        _tabChooseViewSnapShotView = [self.tabSwitchView snapshotViewAfterScreenUpdates:NO];
-        _tabChooseViewSnapShotView.origin = [self.tabSwitchView convertPoint:self.tabSwitchView.frame.origin toView:self.view];
+- (UIView *)tabSwitchSnapShotView {
+    if (!_tabSwitchSnapShotView) {
+        _tabSwitchSnapShotView = [self.tabSwitchView snapshotViewAfterScreenUpdates:NO];
+        _tabSwitchSnapShotView.origin = [self.tabSwitchView convertPoint:self.tabSwitchView.frame.origin toView:self.view];
     }
-    return _tabChooseViewSnapShotView;
+    return _tabSwitchSnapShotView;
 }
 
 @end
